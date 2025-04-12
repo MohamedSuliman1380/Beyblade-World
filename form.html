@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تسجيل اللاعبين</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay">
+        <h2>املأ بيانات اللاعبين</h2>
+        <form id="playerForm">
+            <div id="playerFields"></div>
+            <button type="submit">موافق</button>
+        </form>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const count = parseInt(urlParams.get("count"));
+        const fieldsDiv = document.getElementById("playerFields");
+
+        for (let i = 1; i <= count; i++) {
+            fieldsDiv.innerHTML += `<h3>اللاعب ${i}</h3>
+                <input placeholder="اسم اللاعب ${i}" required><br>
+                ${i === 1 ? '<input placeholder="الدولة" required><br>' +
+                             '<input placeholder="العنوان بالتفصيل" required><br>' +
+                             '<input placeholder="رقم الهاتف" required><br>' : ''}
+                <input placeholder="مستوى معرفة البلابل" required><br><br>`;
+        }
+
+        document.getElementById("playerForm").onsubmit = function(e) {
+            e.preventDefault();
+            window.location.href = "thankyou.html";
+        };
+    </script>
+</body>
+</html>

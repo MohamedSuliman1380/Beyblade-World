@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>اختر عدد اللاعبين</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay">
+        <h2>اختر عدد اللاعبين</h2>
+        <div id="buttons"></div>
+    </div>
+
+    <script>
+        const buttonsDiv = document.getElementById("buttons");
+        for (let i = 1; i <= 6; i++) {
+            const btn = document.createElement("button");
+            btn.innerText = i === 1 ? "لاعب واحد" :
+                            i === 2 ? "لاعبان" :
+                            i === 3 ? "ثلاثة لاعبون" :
+                            i === 4 ? "أربعة لاعبون" :
+                            i === 5 ? "خمسة لاعبون" : "ستة لاعبون";
+            btn.onclick = () => {
+                window.location.href = `form.html?count=${i}`;
+            };
+            buttonsDiv.appendChild(btn);
+            buttonsDiv.appendChild(document.createElement("br"));
+        }
+    </script>
+</body>
+</html>
